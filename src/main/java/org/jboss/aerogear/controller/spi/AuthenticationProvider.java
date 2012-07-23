@@ -1,9 +1,7 @@
 package org.jboss.aerogear.controller.spi;
 
-public interface AuthenticationProvider {
-    public boolean hasRole(AerogearUser user, String param);
+import org.apache.deltaspike.security.api.User;
 
-    public interface AerogearUser {
-        //put your wish here
-    }
+public interface AuthenticationProvider {
+    public boolean hasRole(User user, String param);
 }

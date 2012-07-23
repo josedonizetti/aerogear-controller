@@ -160,6 +160,11 @@
             <version>1.4</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.apache.deltaspike.modules</groupId>
+            <artifactId>deltaspike-security-module-api</artifactId>
+            <version>0.2-incubating</version>
+        </dependency>
     </dependencies>
 
 </project>

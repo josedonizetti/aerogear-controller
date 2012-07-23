@@ -14,6 +14,13 @@ public class DefaultRoute implements Route {
     private Set<RequestMethod> methods;
     private String[] roles;
 
+    public DefaultRoute(String path, RequestMethod[] methods, Class<?> targetClass, Method targetMethod) {
+        this.path = path;
+        this.methods = new HashSet<RequestMethod>(Arrays.asList(methods));
+        this.targetClass = targetClass;
+        this.targetMethod = targetMethod;
+    }
+
     public DefaultRoute(String path, RequestMethod[] methods, Class<?> targetClass, Method targetMethod,
                         String[] roles) {
         this.path = path;
