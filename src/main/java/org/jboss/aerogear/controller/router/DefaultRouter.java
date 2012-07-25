@@ -31,7 +31,7 @@ public class DefaultRouter implements Router {
     private ControllerFactory controllerFactory;
 
     @Inject
-    private SecurityProvider provider;
+    private SecurityProvider securityProvider;
 
     public DefaultRouter(RoutingModule routes, BeanManager beanManager, ViewResolver viewResolver, ControllerFactory controllerFactory) {
         this.routes = routes.build();
@@ -63,7 +63,7 @@ public class DefaultRouter implements Router {
             Route route = routes.routeFor(extractMethod(request), requestPath);
             Object[] params;
 
-            if(route.isSecured() && provider.isRouteAllowed(route)) {
+            if(route.isSecured() && securityProvider.isRouteAllowed(route)) {
                 //TODO Call the security spi services
             }
 
