@@ -7,6 +7,7 @@ import br.com.caelum.iogi.util.DefaultLocaleProvider;
 import br.com.caelum.iogi.util.NullDependencyProvider;
 import org.jboss.aerogear.controller.RequestMethod;
 import org.jboss.aerogear.controller.log.AeroGearLogger;
+import org.jboss.aerogear.controller.spi.SecurityProvider;
 import org.jboss.aerogear.controller.util.StringUtils;
 import org.jboss.aerogear.controller.view.View;
 import org.jboss.aerogear.controller.view.ViewResolver;
@@ -30,6 +31,8 @@ public class DefaultRouter implements Router {
     private ControllerFactory controllerFactory;
 
     @Inject
+    private SecurityProvider provider;
+
     public DefaultRouter(RoutingModule routes, BeanManager beanManager, ViewResolver viewResolver, ControllerFactory controllerFactory) {
         this.routes = routes.build();
         this.beanManager = beanManager;
@@ -60,7 +63,7 @@ public class DefaultRouter implements Router {
             Route route = routes.routeFor(extractMethod(request), requestPath);
             Object[] params;
 
-            if(route.isSecured()) {
+            if(route.isSecured() && provider.isRouteAllowed(route)) {
                 //TODO Call the security spi services
             }
 
