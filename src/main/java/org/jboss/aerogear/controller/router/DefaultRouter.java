@@ -33,6 +33,7 @@ public class DefaultRouter implements Router {
     @Inject
     private SecurityProvider securityProvider;
 
+    @Inject
     public DefaultRouter(RoutingModule routes, BeanManager beanManager, ViewResolver viewResolver, ControllerFactory controllerFactory) {
         this.routes = routes.build();
         this.beanManager = beanManager;
